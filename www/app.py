@@ -13,18 +13,26 @@ logging.basicConfig(level=logging.INFO,
                     datefmt="[%Y-%m-%d %H:%M:%S]")
 
 # asyncio的编程模型就是一个消息循环
-import asyncio, os, json, time
+import asyncio
+import os
+import json
+import time
 from datetime import datetime
 
 from aiohttp import web
 
 # handler:处理url请求,并返回响应结果
+
+
 def index(request):
     # 默认以bytes形式返回响应结果,设置类型为HTML文本
-    return web.Response(body=bytes('<h1>Awesome By 青峰</h1>', encoding='utf-8') ,headers={'Content-Type':'text/html;charset=utf-8'})
+    return web.Response(body=bytes('<h1>Awesome By 青峰</h1>', encoding='utf-8'),
+                        headers={'Content-Type': 'text/html;charset=utf-8'})
 
 # 初始化
-@asyncio.coroutine # 把一个generator标记为coroutine类型
+
+
+@asyncio.coroutine  # 把一个generator标记为coroutine类型
 def init(loop):
     # 创建web应用
     app = web.Application(loop=loop)
